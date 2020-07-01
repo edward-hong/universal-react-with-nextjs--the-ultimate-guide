@@ -1,16 +1,15 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
-          <title>NextPortfolio</title>
           <meta
             name="description"
             content="A site for my programming portfolio"
           />
-          <mea charset="utf-8" />
+          <meta charset="utf-8" />
           <meta name="robots" content="noindex, nofollow" />
           <meta
             name="viewport"
@@ -29,14 +28,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-        <style global jsx>
-          {`
-            body {
-              font-family: 'Roboto', sans-serif;
-            }
-          `}
-        </style>
-      </html>
+      </Html>
     )
   }
 }

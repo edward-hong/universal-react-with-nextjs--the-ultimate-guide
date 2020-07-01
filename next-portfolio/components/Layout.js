@@ -4,7 +4,6 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 
 Router.onRouteChangeStart = (url) => {
-  console.log(url)
   NProgress.start()
 }
 
@@ -13,6 +12,9 @@ Router.onRouteChangeError = () => NProgress.done()
 
 const Layout = ({ children, title }) => (
   <div className="root">
+    <Head>
+      <title>NextPortfolio</title>
+    </Head>
     <header>
       <Link href="/">
         <a>Home</a>
@@ -64,6 +66,7 @@ const Layout = ({ children, title }) => (
           margin: 0;
           font-size: 110%;
           background: #f0f0f0;
+          font-family: 'Roboto', sans-serif;
         }
       `}
     </style>
