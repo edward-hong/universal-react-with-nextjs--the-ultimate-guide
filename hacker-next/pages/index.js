@@ -1,6 +1,8 @@
 import Error from 'next/error'
 import fetch from 'isomorphic-fetch'
 
+import StoryList from '../components/StoryList'
+
 const Index = ({ stories }) => {
   if (stories.length === 0) {
     return <Error statusCode={503} />
@@ -8,11 +10,7 @@ const Index = ({ stories }) => {
   return (
     <div>
       <h1>Hacker Next</h1>
-      <div>
-        {stories.map((story) => (
-          <h2 key={story.id}>{story.title}</h2>
-        ))}
-      </div>
+      <StoryList stories={stories} />
     </div>
   )
 }
