@@ -2,6 +2,7 @@ import Error from 'next/error'
 import fetch from 'isomorphic-fetch'
 
 import Layout from '../components/Layout'
+import CommentList from '../components/CommentList'
 
 const Story = ({ story }) => {
   if (!story) {
@@ -12,13 +13,19 @@ const Story = ({ story }) => {
     <Layout title={story.title}>
       <main>
         <h1 className="story-title">
-          <a href="story.url">{story.title}</a>
+          <a href={story.url}>{story.title}</a>
         </h1>
         <div className="story-details">
           <strong>{story.points} points</strong>
           <strong>{story.comments_count} comments</strong>
           <strong>{story.time_ago}</strong>
         </div>
+
+        {story.comments.length > 0 ? (
+          <CommentList comments={story.comments} />
+        ) : (
+          <div>No comments for this story</div>
+        )}
       </main>
 
       <style jsx>{`
