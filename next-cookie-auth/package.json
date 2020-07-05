@@ -4,7 +4,7 @@
   "description": "Cookie authentication with Next.js",
   "main": "index.js",
   "scripts": {
-    "dev": "node server.js"
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "Edward Hong",
@@ -14,5 +14,8 @@
     "next": "^9.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
