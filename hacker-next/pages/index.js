@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Error from 'next/error'
 import Link from 'next/link'
 import fetch from 'isomorphic-fetch'
@@ -6,6 +7,19 @@ import Layout from '../components/Layout'
 import StoryList from '../components/StoryList'
 
 const Index = ({ stories, page }) => {
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/service-worker.js', { scope: '/' })
+        .then((registration) => {
+          console.log('service worker registration successful', registration)
+        })
+        .catch((err) => {
+          console.warn('service worker registration failed', err.message)
+        })
+    }
+  }, [])
+
   if (stories.length === 0) {
     return <Error statusCode={503} />
   }
