@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { loginUser } from '../lib/auth'
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('Sincere@april.biz')
+  const [password, setPassword] = useState('hildegard.org')
 
   const handleChangeEmail = (e) => setEmail(e.target.value)
   const handleChangePassword = (e) => setPassword(e.target.value)
@@ -22,6 +22,7 @@ const LoginForm = () => {
           name="email"
           placeholder="email"
           onChange={handleChangeEmail}
+          value={email}
         />
       </div>
       <div>
@@ -30,6 +31,7 @@ const LoginForm = () => {
           name="password"
           placeholder="password"
           onChange={handleChangePassword}
+          value={password}
         />
       </div>
       <button type="submit">Submit</button>
