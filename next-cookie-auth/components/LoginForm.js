@@ -6,15 +6,28 @@ import { loginUser } from '../lib/auth'
 const LoginForm = () => {
   const [email, setEmail] = useState('Sincere@april.biz')
   const [password, setPassword] = useState('hildegard.org')
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleChangeEmail = (e) => setEmail(e.target.value)
   const handleChangePassword = (e) => setPassword(e.target.value)
 
+  const showError = (err) => {
+    console.error(err)
+    const error = (err.response && err.response.data) || err.message
+    setError(error)
+    setIsLoading(false)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    loginUser(email, password).then(() => {
-      Router.push('/profile')
-    })
+    setError('')
+    setIsLoading(true)
+    loginUser(email, password)
+      .then(() => {
+        Router.push('/profile')
+      })
+      .catch(showError)
   }
 
   return (
@@ -37,7 +50,10 @@ const LoginForm = () => {
           value={password}
         />
       </div>
-      <button type="submit">Submit</button>
+      <button disabled={isLoading} type="submit">
+        {isLoading ? 'Sending...' : 'Submit'}
+      </button>
+      {error && <div>{error}</div>}
     </form>
   )
 }
