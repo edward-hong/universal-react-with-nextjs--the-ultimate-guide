@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+import Layout from '../components/Layout'
 import { getUserProfile } from '../lib/auth'
 
 const Profile = () => {
@@ -9,7 +10,11 @@ const Profile = () => {
     getUserProfile().then((user) => setUser(user))
   }, [])
 
-  return <pre>{JSON.stringify(user, null, 2)}</pre>
+  return (
+    <Layout title="Profile">
+      <pre>{JSON.stringify(user, null, 2)}</pre>
+    </Layout>
+  )
 }
 
 export default Profile
